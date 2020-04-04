@@ -19,4 +19,4 @@ Lance Hilt <toothehilt@gmail.com>
 Fran Bell <bell_frances@yahoo.com>
 Anais Schenk <anais@popupzendo.org>
 May Chan
-John *mann
+John Helmann
