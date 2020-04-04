@@ -1,3 +1,5 @@
+The purpose of this group is meditation, appropriate for those who have been sitting for years and those who have never meditated. The form is Zen, meaning that we will take off our shoes and line them up neatly, bow as we enter, join the slow walking line, and when the bell rings, bow to our cushions, and sit (cushion or chair provided). If this appeals to you, and you can take an hour in the middle of the day, this group is for you. After 10 minutes walking meditation and 30 minutes sitting, there will be 20 minutes of discussion. It’s expected this part of the hour will evolve along with the group. Whoever wants to, can join us for coffee to continue the conversation.
+
 Richard Waldinger <waldinger@AI.SRI.COM>
 Joseph Hall <joe@popupzendo.org>
 Judy Cosgrove <JudithCosgrove@gmail.com>
