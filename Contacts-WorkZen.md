@@ -1,0 +1,3 @@
+The focus of a monk’s journey is to take what they find in meditation, embody it, and make it the core of their everyday activity. You can do this too. There are three basic elements to Zen: meditate, learn, and make it real. Since we spend more time at work than anywhere else, our greatest opportunity to develop these skills is at work. There’s a place for growth in every moment. You don’t have to go to the mountain to find a community that cultivates a creative spirit to meet our everyday activity. There’s one at Cruzio on Thursdays.  
+
+We understand you have to work with the lunch hour you have.  Late arrivals are welcome.
