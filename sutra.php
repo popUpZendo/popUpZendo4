@@ -27,6 +27,7 @@
       var txtFile = new XMLHttpRequest();
       var allText = "file not found";
       var arrayText = new Array;
+      var speed = 800;
       var txtFileTitle = <?php echo json_encode($sutra.'.txt'); ?>;
       txtFile.onreadystatechange = function () {
         if (txtFile.readyState === XMLHttpRequest.DONE && txtFile.status == 200) {
@@ -50,7 +51,7 @@
             i++;
           }
         }
-        setInterval(showSutra,800)
+        setInterval(showSutra,speed)
       }
       txtFile.open("GET", txtFileTitle, true);
       txtFile.send(null);
