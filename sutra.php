@@ -24,8 +24,9 @@
 
 
 
-    <div class="controls"><a href="javascript:playSutra()"><i class="fas fa-play"></i> Play</a> | <i class="fas fa-stop"></i> Stop | <a href="javascript:setSpeed('decrease')"><i class="fas fa-angle-double-down"></i></a> | <a href="javascript:setSpeed()"><i class="fas fa-angle-double-up"></i></a></div>
+    <div class="controls"><i class="fas fa-play"></i> Play | <i class="fas fa-stop"></i> Stop | <i class="fas fa-angle-double-down"></i> | <i class="fas fa-angle-double-up"></i></div>
     <h1><?php echo $sutraTitle; ?></h1>
+    <hr>
     <div id="txt"><span id="pre"></span><span id="post"></span></div>
     <?php } ?>
     <script type="application/javascript">
@@ -58,16 +59,12 @@
             i++;
           }
         }
-        function playSutra(){
-          setInterval(showSutra,speed)
-        };
+        setInterval(showSutra,speed)
       }
-      alert('loaded');
+
       function setSpeed(psDirection) {
-        alert('hi');
         if (!psDirection) { lsDirection = "increase" } else { lsDirection = psDirection } 
         if(lsDirection == "increase") {
-          alert(lsDirection);
           speed += 100;
         } else {
           speed = 100;
