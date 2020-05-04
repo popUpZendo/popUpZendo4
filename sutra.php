@@ -20,15 +20,22 @@
       }
       $sutraTitle = str_replace('_', ' ', $sutra)
     ?>
+
+
+
+
+    <div class="controls"><a href="javascript:playSutra()">play</a> | stop | <a href="javascript:setSpeed('decrease')">dec</a> | <a href="javascript:setSpeed()">inc </a></div>
     <h1><?php echo $sutraTitle; ?></h1>
     <div id="txt"><span id="pre"></span><span id="post"></span></div>
     <?php } ?>
-    <script type="text/javascript">
+    <script type="application/javascript">
       var txtFile = new XMLHttpRequest();
       var allText = "file not found";
       var arrayText = new Array;
-      var speed = 800;
+      var speed = 800; // setting up speed variable
+
       var txtFileTitle = <?php echo json_encode($sutra.'.txt'); ?>;
+      
       txtFile.onreadystatechange = function () {
         if (txtFile.readyState === XMLHttpRequest.DONE && txtFile.status == 200) {
           allText = txtFile.responseText;
@@ -51,16 +58,33 @@
             i++;
           }
         }
-        setInterval(showSutra,speed)
+        function playSutra(){
+          setInterval(showSutra,speed)
+        };
       }
+      alert('loaded');
+      function setSpeed(psDirection) {
+        alert('hi');
+        if (!psDirection) { lsDirection = "increase" } else { lsDirection = psDirection } 
+        if(lsDirection == "increase") {
+          alert(lsDirection);
+          speed += 100;
+        } else {
+          speed = 100;
+        }
+        showSutra();
+      }
+      speed = 800;
       txtFile.open("GET", txtFileTitle, true);
       txtFile.send(null);
     </script>
 
   </div><!-- #form -->
   <style>
+    body {font-size:22px;line-height:33px;}
     #pre,#post {color:#999;display:block;position:absolute;}
     .wordPost {color:#ccc;}
     .wordPost:last-child {color:#000;}
+    .controls {background:#eee;border-radius:10px;bottom:10px;padding:10px;position:absolute;right:10px;}
   </style>
 <?php include("assets/includes/global-footer.php"); ?>
