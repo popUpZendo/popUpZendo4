@@ -24,7 +24,7 @@
 
 
 
-    <div class="controls"><a href="javascript:playSutra()">play</a> | stop | <a href="javascript:setSpeed('decrease')">dec</a> | <a href="javascript:setSpeed()">inc </a></div>
+    <div class="controls"><a href="javascript:playSutra()"><i class="fas fa-play"></i> Play</a> | <i class="fas fa-stop"></i> Stop | <a href="javascript:setSpeed('decrease')"><i class="fas fa-angle-double-down"></i></a> | <a href="javascript:setSpeed()"><i class="fas fa-angle-double-up"></i></a></div>
     <h1><?php echo $sutraTitle; ?></h1>
     <div id="txt"><span id="pre"></span><span id="post"></span></div>
     <?php } ?>
