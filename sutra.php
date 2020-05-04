@@ -39,7 +39,7 @@
       txtFile.onreadystatechange = function () {
         if (txtFile.readyState === XMLHttpRequest.DONE && txtFile.status == 200) {
           allText = txtFile.responseText;
-          allText = allText.split("\n").join("<br>");
+          allText = allText.split("\n").join("<br><hr> ");
           arrayText = allText.split(' ');
         }
 
@@ -81,7 +81,7 @@
 
   </div><!-- #form -->
   <style>
-    body {font-size:22px;line-height:33px;}
+    body {font-size:22px;}
     #pre,#post {color:#999;display:block;position:absolute;}
     .wordPost {color:#ccc;}
     .wordPost:last-child {color:#000;}
