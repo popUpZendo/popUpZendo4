@@ -51,15 +51,15 @@
         var displayText = arrayText;
         var i = 0;
 
-        function showSutra() {
+        function showSutra(piStartpoint) {
           if(i<arrayText.length){
             wordPost += '<span class="wordPost">' + arrayText[i] + '</span> ';
 
             document.getElementById('post').innerHTML = wordPost;
-            i++;
+            if(!piStartpoint){i++;}
           }
         }
-        setInterval(showSutra,speed)
+        setInterval(showSutra,speed);
       }
 
       function setSpeed(psDirection) {
