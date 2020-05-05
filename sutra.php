@@ -82,6 +82,6 @@
     #pre,#post {color:#999;display:block;position:absolute;}
     .wordPost {color:#ccc;}
     .wordPost:last-child {color:#000;}
-    .controls {background:#eee;border-radius:10px;bottom:10px;padding:10px;position:absolute;right:10px;}
+    .controls {background:#eee;border-radius:10px;bottom:10px;padding:10px;position:fixed;right:10px;}
   </style>
 <?php include("assets/includes/global-footer.php"); ?>
