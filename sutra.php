@@ -23,30 +23,52 @@
       $sutraContentsArray = file($sutra.'.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     ?>
 
-    <div class="controls"><i class="fas fa-play"></i> Play | <i class="fas fa-stop"></i> Stop | <i class="fas fa-angle-double-down"></i> | <i class="fas fa-angle-double-up"></i></div>
-    <h1><?php echo $sutraTitle; ?></h1>
+    <h1><?php echo $sutraTitle; ?>
+    <small class="controls"><a href="javascript:playSutra()"><i class="fas fa-play"></i> Play</a> | <a href="javascript:stopSutra()"><i class="fas fa-stop"></i> Stop</a></small></h1>
     <hr>
-    <div id="txt"><span id="pre"><?php for ($l=0; $l<count($sutraContentsArray); $l++){ 
-      echo $sutraContentsArray[$l].'<br>'.'<hr>';
-    }
-    ?></span><span id="post"></span></div>
+    <div id="txt"><span id="pre"></span><span id="post"></span></div>
     <?php } ?>
 
-    <script type="application/javascript">
-      var arrayText = new Array;
-      arrayText = <?php echo json_encode($sutra.'.txt'); ?>;
+    <script type="text/javascript">
+      var sutraArray = new Array;
+      sutraArray = <?php echo json_encode($sutra.'.txt'); ?>;
       var speed = 800; // setting up speed variable
-      var allText = <?php echo json_encode($sutra); ?>;
-      allText = allText.split("\n").join("<br><hr> ");
-      arrayText = allText.split(' ');
+      var sutraText = <?php echo json_encode($sutraContentsString); ?>;
+      sutraText = sutraText.split("\n").join("<br><hr> ");
+      sutraArray = sutraText.split(' ');
+      var wordCurrent = 0;
+      var wordsRead = '';
+      var startWord = '';
+      var inerval = '';
+
+      document.getElementById('pre').innerHTML = sutraText;
+
+      function showSutra() {
+        if(wordCurrent<sutraArray.length) {
+          wordsRead += '<span class="wordPost">' + sutraArray[wordCurrent] + ' </span>';
+          document.getElementById('post').innerHTML = wordsRead;
+        }
+        wordCurrent++;
+      }
+
+      function playSutra(){
+        interval = setInterval("showSutra()",speed);
+      }
+
+      function stopSutra(){
+        clearInterval(interval);
+      }
     </script>
 
   </div><!-- #form -->
   <style>
     body {font-size:22px;}
-    #pre,#post {color:#999;display:block;position:absolute;}
-    .wordPost {color:#ccc;}
-    .wordPost:last-child {color:#000;}
-    .controls {background:#eee;border-radius:10px;bottom:10px;padding:10px;position:fixed;right:10px;}
+    #pre,#post {color:#888;display:block;position:absolute;}
+    #pre {z-index: 1;}
+    #post {z-index: 2;}
+    #post span {color:#eee;}
+    #post span:last-child {color:#111;}
+    .controls {background:#eee;border-radius:10px;padding:10px;position:fixed;z-index:10;
+    }
   </style>
 <?php include("assets/includes/global-footer.php"); ?>
