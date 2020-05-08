@@ -1,4 +1,4 @@
-<?php include("assets/includes/global-header.php"); ?>
+<?php include("assets/includes/global-header.php"); // 24 lines ?>
   <div id="form" class="container">
     <?php
       if(!isset($_POST['submit']) && !isset($_GET['sutra'])) {
