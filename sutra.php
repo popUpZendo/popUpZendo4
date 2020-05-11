@@ -1,7 +1,7 @@
 <?php include("assets/includes/global-header.php"); // 24 lines ?>
   <div id="form" class="container">
     <?php
-      if(!isset($_POST['submit']) && !isset($_GET['sutra'])) {
+      if(!isset($_GET['sutra'])) {
     ?>
     <div id="content">
       <div id="main_content">
@@ -22,9 +22,7 @@
       </div><!-- #main_content -->
     </div><!-- #content -->
     <?php } else {
-      if(isset($_POST['sutra'])) {
-        $sutra = $_POST['sutra'];
-      } elseif (isset($_GET['sutra'])) {
+      if (isset($_GET['sutra'])) {
         $sutra = $_GET['sutra'];
       }
       $sutraTitle = str_replace('_', ' ', $sutra);
