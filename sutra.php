@@ -24,7 +24,7 @@
     ?>
 
     <h1><?php echo $sutraTitle; ?>
-    <small class="controls"><a href="javascript:playSutra()"><i class="fas fa-play"></i> Play</a> | <a href="javascript:stopSutra()"><i class="fas fa-stop"></i> Stop</a> | <a href="javascript:playSutra('50')"><i class="fas fa-angle-double-up"></i></a> | <a href="javascript:playSutra('-50')"><i class="fas fa-angle-double-down"></i></a> </small></h1>
+    <small class="controls"><a href="javascript:playSutra()"><i class="fas fa-play"></i> Play</a> | <a href="javascript:stopSutra()"><i class="fas fa-stop"></i> Stop</a> | <a href="javascript:playSutra('50')"><i class="fas fa-angle-double-up"></i></a> | <a href="javascript:playSutra('-50')"><i class="fas fa-angle-double-down"></i></a> | <a href="javascript:resetSutra()"><i class="fas fa-undo"></i> Reset</a> </small></h1>
     <hr>
     <div id="txt"><span id="pre"></span><span id="post"></span></div>
     <?php } ?>
@@ -71,12 +71,21 @@
             speed += 50;
           }
         }
-        interval = setInterval("showSutra()", speed);  
+        interval = setInterval("showSutra()", speed);
       }
 
       function stopSutra(){
         clearInterval(interval);
-      }=
+      }
+
+      function resetSutra(){
+        wordCurrent = 0;
+        speed = 600;
+        wordsRead = '';
+
+        stopSutra();
+        playSutra();
+      }
     </script>
 
   </div><!-- #form -->
@@ -87,7 +96,6 @@
     #post {z-index: 2;}
     #post span {color:#eee;}
     #post span:last-child {color:#111;}
- /*   #txt span {cursor:pointer;} */
     .controls {background:#eee;border-radius:10px;padding:10px;position:fixed;z-index:10;
     }
   </style>
