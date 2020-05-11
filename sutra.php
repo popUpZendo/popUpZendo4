@@ -9,11 +9,11 @@
         <form action="sutra.php" method="GET">
           <select name="sutra" id="sutra">
             <?php
-            foreach (glob("*.txt") as $filename) {
-              $filename = str_replace('.txt', '', $filename);
-              $filenameHR = str_replace('_', ' ', $filename);
-              $filenameHR = str_replace('.txt', '', $filenameHR);
-              echo "<option value=".$filename.">".$filenameHR."</option> \n";
+            foreach (glob("*.txt") as $sutra) {
+              $sutra = str_replace('.txt', '', $sutra); // removing .txt of filename
+              $sutraTitle = str_replace('_', ' ', $sutra); // make a Human Readable version of the filename
+              $sutraTitle = str_replace('.txt', '', $sutraTitle);
+              echo "<option value=".$sutra.">".$sutraTitle."</option> \n";
             }
             ?>
           </select>
@@ -25,7 +25,7 @@
       if (isset($_GET['sutra'])) {
         $sutra = $_GET['sutra'];
       }
-      $sutraTitle = str_replace('_', ' ', $sutra);
+      $sutraTitle = str_replace('_', ' ', $sutra); //  make a Human Readable version of the filename
       $sutraContentsString = file_get_contents ($sutra.'.txt');
       $sutraContentsArray = file($sutra.'.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     ?>
