@@ -6,9 +6,18 @@
     <div id="content">
       <div id="main_content">
         <h1>Sutra</h1>
-        <form action="sutra.php" method="POST">
-          <input type="text" name="sutra" id="sutra" value="sutra" placeholder="sutra">
-          <input type="submit" name="submit" id="submit" value="submit">
+        <form action="sutra.php" method="GET">
+          <select name="sutra" id="sutra">
+            <?php
+            foreach (glob("*.txt") as $filename) {
+              $filename = str_replace('.txt', '', $filename);
+              $filenameHR = str_replace('_', ' ', $filename);
+              $filenameHR = str_replace('.txt', '', $filenameHR);
+              echo "<option value=".$filename.">".$filenameHR."</option> \n";
+            }
+            ?>
+          </select>
+          <input type="submit" value="submit">
         </form>
       </div><!-- #main_content -->
     </div><!-- #content -->
@@ -27,7 +36,6 @@
     <small class="controls"><a href="javascript:playSutra()"><i class="fas fa-play"></i> Play</a> | <a href="javascript:stopSutra()"><i class="fas fa-stop"></i> Stop</a> | <a href="javascript:playSutra('50')"><i class="fas fa-angle-double-up"></i></a> | <a href="javascript:playSutra('-50')"><i class="fas fa-angle-double-down"></i></a> | <a href="javascript:resetSutra()"><i class="fas fa-undo"></i> Reset</a> </small></h1>
     <hr>
     <div id="txt"><span id="pre"></span><span id="post"></span></div>
-    <?php } ?>
 
     <script type="text/javascript">
       var sutraArray = new Array;
@@ -87,7 +95,7 @@
         playSutra();
       }
     </script>
-
+  <?php } ?>
   </div><!-- #form -->
   <style>
     body {font-size:22px;}
