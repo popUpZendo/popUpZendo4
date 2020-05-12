@@ -36,18 +36,18 @@
     <div id="txt"><span id="pre"></span><span id="post"></span></div>
 
     <script type="text/javascript">
-      var sutraArray = new Array;
-      sutraArray = <?php echo json_encode($sutra.'.txt'); ?>;
+      var sutraArray = new Array; // create array for the individual sutra
+      sutraArray = <?php echo json_encode($sutra.'.txt'); ?>; // fill the individual sutra array with the file contents
       var speed = 600; // setting up speed variable
-      var sutraText = <?php echo json_encode($sutraContentsString); ?>;
-      sutraText = sutraText.split("\n").join("<br><hr> ");
-      sutraText = sutraText.split("|").join("");
-      sutraArray = sutraText.split(' ');
-      var wordCurrent = 0;
-      var wordsRead = '';
-      var wordsComposed = '';
-      var startWord = '';
-      var interval = '';
+      var sutraText = <?php echo json_encode($sutraContentsString); ?>; // create a string of the individual sutra contents
+      sutraText = sutraText.split("\n").join("<br><hr> "); // set the string appropriately
+      sutraText = sutraText.split("|").join(""); // set the string appropriately
+      sutraArray = sutraText.split(' '); // fill the individual sutra with the file string **duplicate?**
+      var wordCurrent = 0; // set the string to hold the current word number of the individual sutra
+      var wordsRead = ''; // set up a string to hold the read words of the individual sutra
+      var wordsComposed = ''; // set the string of the individual sutra
+      var startWord = ''; // set a string to hold the word read **unused**
+      var interval = ''; // set a string to hold the interval of the setInterval function
 
       function buildInitialSutra() {
         for(var word = 0;word<sutraArray.length;word++) {
