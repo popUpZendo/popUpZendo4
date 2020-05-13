@@ -9,11 +9,10 @@
         <form action="sutra.php" method="GET">
           <select name="sutra" id="sutra">
             <?php
-            foreach (glob("*.txt") as $sutra) {
+            foreach (glob("*.txt") as $sutra){
               $sutra = str_replace('.txt', '', $sutra); // removing .txt of filename
               $sutraTitle = str_replace('_', ' ', $sutra); // make a Human Readable version of the filename
-              $sutraTitle = str_replace('.txt', '', $sutraTitle);
-              echo "<option value=".$sutra.">".$sutraTitle."</option> \n";
+              echo "<option value=".$sutra.">".$sutraTitle."</option> \n"; // insert each .txt file as an option
             }
             ?>
           </select>
@@ -22,12 +21,12 @@
       </div><!-- #main_content -->
     </div><!-- #content -->
     <?php } else {
-      if (isset($_GET['sutra'])) {
+      if (isset($_GET['sutra'])){
         $sutra = $_GET['sutra'];
       }
-      $sutraTitle = str_replace('_', ' ', $sutra); //  make a Human Readable version of the filename
-      $sutraContentsString = file_get_contents ($sutra.'.txt');
-      $sutraContentsArray = file($sutra.'.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+      $sutraTitle = str_replace('_', ' ', $sutra); // make a Human Readable version of the filename
+      $sutraContentsString = file_get_contents ($sutra.'.txt'); // insert the file contents into a string
+      $sutraContentsArray = file($sutra.'.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES); // make an array of the file contents **unused**
     ?>
 
     <h1><?php echo $sutraTitle; ?>
@@ -49,8 +48,8 @@
       var startWord = ''; // set a string to hold the word read **unused**
       var interval = ''; // set a string to hold the interval of the setInterval function
 
-      function buildInitialSutra() {
-        for(var word = 0;word<sutraArray.length;word++) {
+      function buildInitialSutra(){ // build the sutra
+        for(var word = 0;word<sutraArray.length;word++){
           wordsComposed += '<span class="wordIndividual wordPre" id="word-' + word + '">' + sutraArray[word] + ' </span>';
           document.getElementById('pre').innerHTML = wordsComposed;
         }
@@ -58,20 +57,20 @@
 
       buildInitialSutra();
 
-      function showSutra() { // build the post words string
-        if(wordCurrent<sutraArray.length) {
+      function showSutra(){ // build the post words string
+        if(wordCurrent<sutraArray.length){
           wordsRead += '<span class="wordIndividual wordPost" id="word-' + wordCurrent + '">' + sutraArray[wordCurrent] + ' </span>';
           document.getElementById('post').innerHTML = wordsRead;
         }
         wordCurrent++;
       }
 
-      function playSutra(speedChange){
+      function playSutra(speedChange){ // play the sutra
         stopSutra();
-        if(!speedChange) {
+        if(!speedChange){
           speed = speed;
         } else {
-          if(Math.sign(speedChange) == 1) { // decrease
+          if(Math.sign(speedChange) == 1){ // decrease
             speed = speed - 50;
           } else {
             speed += 50;
@@ -80,14 +79,14 @@
         interval = setInterval("showSutra()", speed);
       }
 
-      function stopSutra(){
+      function stopSutra(){ // stop the sutra
         clearInterval(interval);
       }
 
-      function resetSutra(){
-        wordCurrent = 0;
-        speed = 600;
-        wordsRead = '';
+      function resetSutra(){ // reset and restart the sutra
+        wordCurrent = 0; // set the current position to the beginning
+        speed = 600; // reset default speed
+        wordsRead = ''; // clear the post played words
 
         stopSutra();
         playSutra();
@@ -96,12 +95,12 @@
   <?php } ?>
   </div><!-- #form -->
   <style>
+    /* built by Benjamin Meyers for pop-up Zendo */
     body {font-size:22px;}
     #pre,#post {color:#888;display:block;position:absolute;}
     #pre {z-index: 1;}
     #post {z-index: 2;}
     #post span {color:#eee;}
-    .controls {background:#eee;border-radius:10px;margin:0 0 0 1em;padding:10px;position:fixed;z-index:10;
-    }
+    .controls {background:#eee;border-radius:10px;margin:0 0 0 1em;padding:10px;position:fixed;z-index:10;}
   </style>
 <?php include("assets/includes/global-footer.php"); ?>
