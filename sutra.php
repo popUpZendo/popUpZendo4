@@ -101,7 +101,6 @@
     #pre {z-index: 1;}
     #post {z-index: 2;}
     #post span {color:#eee;}
-    #post span:last-child {color:#111;}
     .controls {background:#eee;border-radius:10px;margin:0 0 0 1em;padding:10px;position:fixed;z-index:10;
     }
   </style>
