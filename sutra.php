@@ -30,7 +30,8 @@
     ?>
 
     <h1><?php echo $sutraTitle; ?>
-    <small class="controls"><a href="javascript:playSutra()"><i class="fas fa-play"></i></a> | <a href="javascript:stopSutra()"><i class="fas fa-stop"></i></a> | <a href="javascript:playSutra('50')"><i class="fas fa-angle-double-up"></i></a> | <a href="javascript:playSutra('-50')"><i class="fas fa-angle-double-down"></i></a> | <a href="javascript:resetSutra()"><i class="fas fa-undo"></i></a></small></h1>
+    <small class="controls"><a href="javascript:playSutra()"><i class="fas fa-play"></i></a> | <a href="javascript:stopSutra()"><i class="fas fa-stop"></i></a> | <a href="javascript:playSutra('50')"><i class="fas fa-angle-double-up"></i></a> | <a href="javascript:playSutra('-50')"><i class="fas fa-angle-double-down"></i></a> | <a href="javascript:resetSutra()"><i class="fas fa-undo"></i></a></small>
+    </h1>
     <hr>
     <div id="txt"><span id="pre"></span><span id="post"></span></div>
 
@@ -50,8 +51,8 @@
 
       function buildInitialSutra(){ // build the sutra
         for(var word = 0;word<sutraArray.length;word++){
-          wordsComposed += '<span class="wordIndividual wordPre" id="word-' + word + '">' + sutraArray[word] + ' </span>';
-          document.getElementById('pre').innerHTML = wordsComposed;
+        wordsComposed += '<span class="wordIndividual wordPre" id="word-' + word + '">' + sutraArray[word] + ' </span>'; // add the current word to the function
+          document.getElementById('pre').innerHTML = wordsComposed + '<br><br>'; // insert the wordsComposed variable into the innerHML of #pre
         }
       }
 
@@ -59,28 +60,28 @@
 
       function showSutra(){ // build the post words string
         if(wordCurrent<sutraArray.length){
-          wordsRead += '<span class="wordIndividual wordPost" id="word-' + wordCurrent + '">' + sutraArray[wordCurrent] + ' </span>';
-          document.getElementById('post').innerHTML = wordsRead;
+          wordsRead += '<span class="wordIndividual wordPost" id="word-' + wordCurrent + '">' + sutraArray[wordCurrent] + ' </span>'; // add the current word
+          document.getElementById('post').innerHTML = wordsRead; // insert the wordsRead variable into the innerHML of #post
         }
-        wordCurrent++;
+        wordCurrent++; // increase the value
       }
 
       function playSutra(speedChange){ // play the sutra
-        stopSutra();
-        if(!speedChange){
-          speed = speed;
-        } else {
+        stopSutra(); // stop the Sutrq
+        if(!speedChange){ // no passed variable
+          speed = speed; // don't change the speed
+        } else { // passed variable
           if(Math.sign(speedChange) == 1){ // decrease
-            speed = speed - 50;
-          } else {
-            speed += 50;
-          }
+            speed = speed - 50; // subtract 50/1000 from the speed
+          } else { // increase
+            speed += 50; // add 50/1000 to the speed
+          } 
         }
-        interval = setInterval("showSutra()", speed);
+        interval = setInterval("showSutra()", speed); // set the interval
       }
 
       function stopSutra(){ // stop the sutra
-        clearInterval(interval);
+        clearInterval(interval); // clear interval
       }
 
       function resetSutra(){ // reset and restart the sutra
@@ -88,15 +89,15 @@
         speed = 600; // reset default speed
         wordsRead = ''; // clear the post played words
 
-        stopSutra();
-        playSutra();
+        stopSutra(); // stop the sutra
+        playSutra(); // start the sutra
       }
     </script>
   <?php } ?>
   </div><!-- #form -->
   <style>
     /* built by Benjamin Meyers for pop-up Zendo */
-    body {font-size:22px;}
+    body {font-family:Times serif;font-size:24px;}
     #pre,#post {color:#888;display:block;position:absolute;}
     #pre {z-index: 1;}
     #post {z-index: 2;}
