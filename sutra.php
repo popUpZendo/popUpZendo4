@@ -64,7 +64,7 @@
       }
 
       function playSutra(speedChange){ // play the sutra
-        stopSutra(); // stop the Sutrq
+        stopSutra(); // stop the Sutra
         if(!speedChange){ // no passed variable
           speed = speed; // don't change the speed
         } else { // passed variable
@@ -89,6 +89,23 @@
         stopSutra(); // stop the sutra
         document.getElementById('post').innerHTML = wordsRead; // insert the wordsRead variable into the innerHML of #post
       }
+
+      var placeSutra = function(){
+        var place = this.id; // set the position to the word clicked
+        place = place.replace('word-',''); // format the position
+
+        wordsRead = '';
+        for(var wordCurrent = 0;wordCurrent<=place;wordCurrent++){
+          wordsRead += '<span class="wordIndividual wordPost" id="word-' + wordCurrent + '">' + sutraArray[wordCurrent] + ' </span>'; // add the current word to the function
+        }
+        document.getElementById('post').innerHTML = wordsRead + '<br><br>'; // insert the wordsComposed variable into the innerHML of #pre
+      }
+
+      var elements = document.getElementsByClassName("wordIndividual");
+
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].addEventListener('click', placeSutra, false);
+      }
     </script>
   <?php } ?>
   </div><!-- #form -->
@@ -98,8 +115,9 @@
     #pre,#post {color:#333;display:block;position:absolute;}
     #pre {z-index: 1;}
     #post {z-index: 2;}
-    #post span {color:#eee;}
+    #post .wordPost {color:#eee;}
     hr {border-top-color:#ccc;}
+    .wordIndividual {cursor:pointer;}
     .controls {background:#eee;border-radius:10px;margin:0 0 0 1em;padding:10px;position:fixed;z-index:10;}
   </style>
 <?php include("assets/includes/global-footer.php"); ?>
