@@ -5,7 +5,7 @@
     ?>
     <div id="content">
       <div id="main_content">
-        <h1>Sutra</h1>
+        <h1>Sutra Reader</h1>
         <form action="sutra.php" method="GET">
           <select name="sutra" id="sutra">
             <?php
@@ -25,9 +25,12 @@
         $sutra = $_GET['sutra'];
       }
       $sutraTitle = str_replace('_', ' ', $sutra); // make a Human Readable version of the filename
+      $sutraTitle = str_replace('PZ-', '', $sutraTitle); // Refine code to make more generic
+      $sutraTitle = str_replace('ZKS-', '', $sutraTitle); // Refine code to make more generic
       $sutraContentsString = file_get_contents ($sutra.'.txt'); // insert the file contents into a string
     ?>
 
+    <a href="sutra.php">Home</a><br />
     <h1><?php echo $sutraTitle; ?>
     <small class="controls"><a href="javascript:playSutra()"><i class="fas fa-play"></i></a> | <a href="javascript:stopSutra()"><i class="fas fa-stop"></i></a> | <a href="javascript:playSutra('50')"><i class="fas fa-angle-double-up"></i></a> | <a href="javascript:playSutra('-50')"><i class="fas fa-angle-double-down"></i></a> | <a href="javascript:resetSutra()"><i class="fas fa-undo"></i></a></small>
     </h1>
